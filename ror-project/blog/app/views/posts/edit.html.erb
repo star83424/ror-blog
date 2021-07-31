@@ -1,5 +1,5 @@
 <div class="page-header">
-    <h1 class="page-title">New Post</h1>
+    <h1 class="page-title">Edit Post</h1>
     <%= link_to 'Back', posts_path %>
 </div>
 
@@ -17,7 +17,7 @@
         <% end %>  
         
         <!-- TIP：如果你要連到的 action 都在同一個 controller 下，你無需指定 :controller 選項，因為 Rails 預設的情況下會使用當前的 controller -->
-        <%= form_for :post, url: posts_path do |f| %>
+        <%= form_for :post, url: post_path, method: :patch do |f| %>
             <p>
                 <%= f.label :title %><br>
                 <%= f.text_field :title %>

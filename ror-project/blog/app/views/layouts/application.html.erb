@@ -8,9 +8,35 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/d3f284b663.js" crossorigin="anonymous"></script>
   </head>
-
   <body>
-    <%= yield %>
+
+    <div class="side-menu">
+      <%= link_to root_path do %>
+        <i class="fas fa-user-astronaut side-menu-logo"></i>
+      <% end %>
+
+      <p class="sign-in">
+        Blog
+      </p>
+      <ul>
+        <li>a</li>
+        <li>b</li>
+        <li>c</li>
+      </ul>
+
+      <p class="sign-in">
+        Social media
+      </p>
+      <ul>
+        <li><a href="https://www.linkedin.com/in/po-chien-hao-621150160/">linkedIn</a></li>
+        <li><a href="https://www.facebook.com/profile.php?id=100001518861042">facebook</a></li>
+        <li><a href="https://www.instagram.com/star83424/">instagram</a></li>
+      </ul>
+    </div>
+    <div class="page"> 
+      <%= yield %>
+    </div>
   </body>
 </html>

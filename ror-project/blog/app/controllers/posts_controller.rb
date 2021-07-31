@@ -5,20 +5,48 @@ class PostsController < ApplicationController
     end
 
     def show
+        puts ">>>>>> Posts Controller show!"
         @post = Post.find(params[:id])
     end
 
     def new
         puts ">>>>>> Posts Controller new!"
+        @post = Post.new
+    end
+
+    def edit
+        puts ">>>>>> Posts Controller edit!"
+        @post = Post.find(params[:id])
     end
 
     def create
         puts ">>>>>> Posts Controller create!"
         # render json: params[:post]
         @post = Post.new(post_params)
-        @post.save
-        redirect_to @post
+        if @post.save
+            redirect_to @post
+        else
+            render 'new'
+        end
+        
     end
+
+    def update
+        puts ">>>>>> Posts Controller update!"
+        @post = Post.find(params[:id])
+        if @post.update(post_params)
+            redirect_to @post
+        else
+            render 'edit'
+        end
+    end
+
+    def destroy
+        @post = Post.find(params[:id])
+        @post.destroy
+       
+        redirect_to posts_path
+      end
 
     private
         # Prevent mass-assign

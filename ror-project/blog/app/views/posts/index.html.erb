@@ -1,19 +1,22 @@
-<h1>Posts List</h1>
+<div class="page-header">
+    <h1 class="page-title">Posts List</h1>
+    <%= link_to 'New Post', new_post_path %>
+</div>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Text</th>
-    <th>Published Time</th>
-  </tr>
- 
-  <% @posts.each do |post| %>
-    <tr>
-      <td><%= link_to post.title, post %></td>
-      <td><%= post.text %></td>
-      <td><%= post.created_at.strftime("%B %d, %Y") %></td>
-    </tr>
-  <% end %>
-
-  <%= link_to 'New Post', new_post_path %>
-</table>
+<div class="page-body">
+    <div class="page-content">
+        <table class="post-list-table">
+            <tr>
+              <th class="table-title">Title</th>
+              <th>Published Time</th>
+            </tr>
+           
+            <% @posts.each do |post| %>
+              <tr>
+                <td><%= link_to post.title, post %></td>
+                <td><%= post.created_at.strftime("%B %d, %Y") %></td>
+              </tr>
+            <% end %>
+        </table>
+    </div>
+</div>
