@@ -87,13 +87,25 @@
 }
 
 .post-list-table{
-    width: 600px;
+    width: 800px;
 }
 
 .table-title{
-    width: 70%;
+    width: 50%;
+}
+
+.table-author{
+    width: 30%;
+}
+
+.table-published-time{
+    width: 20%;
 }
 
 .field_with_errors{
     color: red;
+}
+
+td{
+    text-align: center;
 }

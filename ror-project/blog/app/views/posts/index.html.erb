@@ -15,14 +15,14 @@
         <table class="post-list-table">
             <tr>
               <th class="table-title">Title</th>
-              <th>Author</th>
-              <th>Published Time</th>
+              <th class="table-author">Author</th>
+              <th class="table-published-time">Published Time</th>
             </tr>
            
             <% @posts.each do |post| %>
               <tr>
                 <td><%= link_to post.title, post %></td>
-                <td><%= post.author_id %></td>
+                <td><%= post.author.email %></td>
                 <td><%= post.created_at.strftime("%B %d, %Y") %></td>
               </tr>
             <% end %>

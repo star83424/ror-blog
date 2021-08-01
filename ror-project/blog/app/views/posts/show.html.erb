@@ -17,7 +17,7 @@
 <div class="page-body">
 	<div class="page-content">
 		<div class="post-date">
-			<p>Author: <%= @post.author_id%></p>
+			<p>Author: <%= @post.author.email%></p>
 		</div>
 		<div class="post-date">
 			<p>Published time: <%= @post.created_at.strftime("%B %d, %Y")%></p>
