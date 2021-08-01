@@ -27,6 +27,18 @@
     position: fixed;
 }
 
+.side-menu-content{
+    padding: 10%;
+}
+
+.side-menu-logo{
+    position: relative;
+    width: calc(var(--side-menu-width) * 0.7);
+    height: calc(var(--side-menu-width) * 0.7);
+    font-size: calc(var(--side-menu-width) * 0.7 * 0.8);
+    padding: calc(var(--side-menu-width) * 0.7 * 0.1);
+}
+
 .page{
     position: fixed;
     display: inline-block;
