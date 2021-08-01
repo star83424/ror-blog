@@ -1,3 +1,9 @@
 # tmp file
 steps.txt
 notice.txt
+
+
+# minimal Rails specific artifacts
+db/*.sqlite3
+/log/*
+/tmp/*
