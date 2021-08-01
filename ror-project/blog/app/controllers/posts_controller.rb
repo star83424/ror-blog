@@ -19,6 +19,7 @@ class PostsController < ApplicationController
     def edit
         puts ">>>>>> Posts Controller edit!"
         @post = Post.find(params[:id])
+        validate_the_author_of_the_post(@post)
         @author = current_author
     end
 
@@ -26,6 +27,7 @@ class PostsController < ApplicationController
         puts ">>>>>> Posts Controller create!"
         # render json: params[:post]
         @post = Post.new(post_params)
+        @post.author_id = current_author.id
         if @post.save
             redirect_to @post
         else
@@ -37,6 +39,7 @@ class PostsController < ApplicationController
     def update
         puts ">>>>>> Posts Controller update!"
         @post = Post.find(params[:id])
+        validate_the_author_of_the_post(@post)
         @author = current_author
         if @post.update(post_params)
             redirect_to @post
@@ -47,14 +50,31 @@ class PostsController < ApplicationController
 
     def destroy
         @post = Post.find(params[:id])
+        validate_the_author_of_the_post(@post)
         @post.destroy
        
         redirect_to posts_path
-      end
+    end
+
+
+    private
+        # Check if it's the author of this post
+        def is_the_author_of_the_post(post)
+            post.author_id == current_author
+        end
 
     private
         # Prevent mass-assign
         def post_params
             params.require(:post).permit(:title, :text)
+        end
+
+    private
+        # Prevent cross author post-edition
+        def validate_the_author_of_the_post(post)
+            if !is_the_author_of_the_post(post)
+                puts ">>>>>> Validation failed: Un-author action is prohibited!"
+                redirect_to post_path
+            end
         end
 end

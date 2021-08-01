@@ -1,7 +1,6 @@
-<p>
-    <%= comment.commenter %>
-    <%= comment.created_at.strftime("%B %d, %Y") %>
-</p>
+<b>
+    <%= comment.commenter %> commented on <%= comment.created_at.strftime("%B %d, %Y") %>
+</b>
 <p>
     <%= comment.content %>
 </p>
