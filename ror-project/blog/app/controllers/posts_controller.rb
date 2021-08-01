@@ -93,7 +93,7 @@ class PostsController < ApplicationController
     private
         # Check if it's the author of this post
         def is_the_author_of_the_post(post)
-            post.author_id == current_author
+            post.author_id == current_author.id
         end
 
     private
