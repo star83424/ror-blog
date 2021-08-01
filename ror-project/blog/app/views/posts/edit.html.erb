@@ -1,6 +1,9 @@
 <div class="page-header">
     <h1 class="page-title">Edit Post</h1>
     <%= link_to 'Back', posts_path %>
+    <% if author_signed_in? %>
+      <%= link_to 'Log Out', destroy_author_session_path, method: :delete%>
+    <% end %>
 </div>
 
 <div class="page-body">

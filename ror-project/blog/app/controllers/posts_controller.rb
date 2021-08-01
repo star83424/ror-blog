@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+    before_action :authenticate_author!, except: [:index, :show]
+
     def index
         puts ">>>>>> Posts Controller index!"
         @posts = Post.all.order('created_at DESC')
