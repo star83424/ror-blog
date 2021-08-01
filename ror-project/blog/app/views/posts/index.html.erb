@@ -45,9 +45,9 @@
 </div>
 
 <!--# we also want to add content to side menu below the "Blog"-->
-<% content_for(:menu_blog) do %>
+<% content_for(:menu_blog_search) do %>
   <%= form_tag posts_path, method: :get do %>
-    Blog account: 
+    Visit by Blog Account: 
     <%= text_field_tag :blogger, (@blogger ? @blogger.email: nil) %>
     <%= button_tag "Go" %>
   <% end %>

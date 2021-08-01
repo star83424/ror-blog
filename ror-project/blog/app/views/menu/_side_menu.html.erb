@@ -4,7 +4,13 @@
             <i class="fas fa-user-astronaut"></i>
         </div>
         <b class="sign-in">
-            Welcome <%= current_author.email %> !
+            Welcome 
+            <% if author_signed_in? %>
+                <%= current_author.email %>
+            <% else %> 
+                to Blog Platform
+            <% end %>
+            !
         </b>
         <p class="notice">
             <%= notice %>
@@ -12,7 +18,19 @@
         <p class="devise-alert">
             <%= alert %>
         </p>
-        <%= yield :menu_blog %>
-            <%= render 'menu/social_media' %>
+        <br>
+        <ul>
+            <li>
+                <%= link_to 'All Posts', posts_path() %>
+            </li>
+            <% if author_signed_in? %>
+                <li>
+                    <%= link_to 'My Blog', posts_path(:blogger_id => current_author.id) %>
+                </li>
+            <% end %>
+        </ul>
+        <br>
+        <%= yield :menu_blog_search %>
+        <%= render 'menu/social_media' %>
     </div>
 </div>
