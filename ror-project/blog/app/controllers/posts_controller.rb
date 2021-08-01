@@ -19,6 +19,7 @@ class PostsController < ApplicationController
     def edit
         puts ">>>>>> Posts Controller edit!"
         @post = Post.find(params[:id])
+        @author = current_author
     end
 
     def create
@@ -36,6 +37,7 @@ class PostsController < ApplicationController
     def update
         puts ">>>>>> Posts Controller update!"
         @post = Post.find(params[:id])
+        @author = current_author
         if @post.update(post_params)
             redirect_to @post
         else
