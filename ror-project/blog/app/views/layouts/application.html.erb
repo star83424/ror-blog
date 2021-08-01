@@ -8,21 +8,10 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <!-- <script src="https://kit.fontawesome.com/d3f284b663.js" crossorigin="anonymous"></script> -->
+    <script src="https://kit.fontawesome.com/d3f284b663.js" crossorigin="anonymous"></script>
   </head>
   <body>
-
-    <div class="side-menu">
-      <div class="side-menu-content">
-        <div class="side-menu-logo">
-          <!-- <i class="fas fa-user-astronaut"></i> -->
-        </div>
-        <%= render 'menu/blog' %>
-        <%= render 'menu/social_media' %>
-      </div>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-    </div>
+    <%= render 'menu/side_menu' %>
     <div class="page"> 
       <%= yield %>
     </div>

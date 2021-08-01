@@ -3,6 +3,12 @@ class PostsController < ApplicationController
 
     def index()
         puts ">>>>>> Posts Controller index!"
+
+        if params[:blogger_id]
+            @blogger = Author.find(params[:blogger_id])
+        elsif params[:blogger]
+            @blogger = Author.where('email = ?', params[:blogger]).first
+        end
         @total_posts = Post.count
 
         # Post amount per page
@@ -15,8 +21,16 @@ class PostsController < ApplicationController
         @go_to_page = params[:go_to_page]? params[:go_to_page].to_i : 1
         @go_to_page = 1 if @go_to_page > @total_page
 
-        # Get the posts result
-        @posts = Post.order('created_at DESC').limit(@per_page).offset(offset(@go_to_page, @per_page))
+        if !@blogger
+            # Get the posts result
+            @posts = Post.order('created_at DESC').limit(@per_page).offset(offset(@go_to_page, @per_page))
+            params.delete(:blogger_id)
+            params.delete(:blogger)
+        else# Get the posts result
+            puts @blogger
+            @posts = Post.where('author_id = ?', @blogger.id).order('created_at DESC').offset(offset(@go_to_page, @per_page))
+        end
+
     end
 
     def show

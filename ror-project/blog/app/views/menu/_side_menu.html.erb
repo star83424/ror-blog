@@ -1,0 +1,18 @@
+<div class="side-menu">
+    <div class="side-menu-content">
+        <div class="side-menu-logo">
+            <i class="fas fa-user-astronaut"></i>
+        </div>
+        <b class="sign-in">
+            Welcome to Blog Platform!
+        </b>
+        <p class="notice">
+            <%= notice %>
+        </p>
+        <p class="devise-alert">
+            <%= alert %>
+        </p>
+        <%= yield :menu_blog %>
+            <%= render 'menu/social_media' %>
+    </div>
+</div>

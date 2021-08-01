@@ -1,6 +1,6 @@
 <div class="page-header">
     <span class="page-title"><%= @post.title %></span>
-    <%= link_to 'Back', posts_path %>
+    <%= link_to 'Back', posts_path(:blogger_id=>@post.author.id)%>
 	<% if author_signed_in? %>
 		<% if @post.author_id == current_author.id %>
 			<%= link_to 'Edit', edit_post_path(@post) %>

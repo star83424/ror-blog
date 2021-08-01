@@ -1,5 +1,10 @@
 <div class="page-header">
-    <h1 class="page-title">Posts List</h1>
+    <% if @blogger %>
+      <h1 class="page-title"><%= @blogger.email %>'s Blog</h1>
+      <%= link_to 'Back to all', posts_path%>
+    <% else %>
+      <h1 class="page-title">All Posts</h1>
+    <% end %>
     <% if author_signed_in? %>
       <%= link_to 'New Post', new_post_path%>
       <%= link_to 'Log Out', destroy_author_session_path, method: :delete%>
@@ -27,8 +32,9 @@
               </tr>
             <% end %>
         </table>
+        <br>
         <%= form_tag posts_path, method: :get do %>
-          <%= pluralize(@total_posts, "result")%> found! 
+          <%= pluralize(@total_posts, "result")%> found! <br>
           <%= button_tag "Go to page" %>
           <%= select_tag :go_to_page, options_for_select([*(1..@total_page)], @go_to_page) %>
           with 
@@ -37,3 +43,15 @@
         <% end %>
     </div>
 </div>
+
+<!--# we also want to add content to side menu below the "Blog"-->
+<% content_for(:menu_blog) do %>
+  <%= form_tag posts_path, method: :get do %>
+    Blog account: 
+    <%= text_field_tag :blogger, (@blogger ? @blogger.email: nil) %>
+    <%= button_tag "Go" %>
+  <% end %>
+  <ul>
+    
+  </ul>
+<% end %>
