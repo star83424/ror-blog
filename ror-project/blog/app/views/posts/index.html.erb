@@ -27,5 +27,13 @@
               </tr>
             <% end %>
         </table>
+        <%= form_tag posts_path, method: :get do %>
+          <%= pluralize(@total_posts, "result")%> found! 
+          <%= button_tag "Go to page" %>
+          <%= select_tag :go_to_page, options_for_select([*(1..@total_page)], @go_to_page) %>
+          with 
+          <%= text_field_tag :per_page, @per_page %>
+          per page
+        <% end %>
     </div>
 </div>

@@ -1,9 +1,22 @@
 class PostsController < ApplicationController
     before_action :authenticate_author!, except: [:index, :show]
 
-    def index
+    def index()
         puts ">>>>>> Posts Controller index!"
-        @posts = Post.all.order('created_at DESC')
+        @total_posts = Post.count
+
+        # Post amount per page
+        @per_page = params[:per_page]? params[:per_page].to_i : 10
+
+        # Total page number for dropdown
+        @total_page = (@total_posts/ @per_page.to_f).ceil
+
+        # Get the target page & check if it's validate
+        @go_to_page = params[:go_to_page]? params[:go_to_page].to_i : 1
+        @go_to_page = 1 if @go_to_page > @total_page
+
+        # Get the posts result
+        @posts = Post.order('created_at DESC').limit(@per_page).offset(offset(@go_to_page, @per_page))
     end
 
     def show
@@ -55,6 +68,12 @@ class PostsController < ApplicationController
        
         redirect_to posts_path
     end
+
+    private
+        # Calculate off set
+        def offset(current_page, per_page)
+            per_page * (current_page - 1)
+        end
 
 
     private
