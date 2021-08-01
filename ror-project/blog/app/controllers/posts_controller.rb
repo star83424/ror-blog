@@ -9,7 +9,18 @@ class PostsController < ApplicationController
         elsif params[:blogger]
             @blogger = Author.where('email = ?', params[:blogger]).first
         end
-        @total_posts = Post.count
+        if !@blogger
+            # Get all posts result
+            post_relation = Post.order('created_at DESC')
+            params.delete(:blogger_id)
+            params.delete(:blogger)
+        else
+            # Get posts result by blogger
+            post_relation = Post.where('author_id = ?', @blogger.id).order('created_at DESC')
+        end
+
+        # Total posts of current relation
+        @total_posts = post_relation.count
 
         # Post amount per page
         @per_page = params[:per_page]? params[:per_page].to_i : 10
@@ -21,15 +32,8 @@ class PostsController < ApplicationController
         @go_to_page = params[:go_to_page]? params[:go_to_page].to_i : 1
         @go_to_page = 1 if @go_to_page > @total_page
 
-        if !@blogger
-            # Get the posts result
-            @posts = Post.order('created_at DESC').limit(@per_page).offset(offset(@go_to_page, @per_page))
-            params.delete(:blogger_id)
-            params.delete(:blogger)
-        else# Get the posts result
-            puts @blogger
-            @posts = Post.where('author_id = ?', @blogger.id).order('created_at DESC').offset(offset(@go_to_page, @per_page))
-        end
+        # Get relation result by LIMIT & OFFSET
+        @posts = post_relation.order('created_at DESC').offset(offset(@go_to_page, @per_page))
 
     end
 
