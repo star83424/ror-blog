@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
     before_action :authenticate_author!, except: [:index, :show]
+    before_action :sanitize_page_params
 
     def index()
         puts ">>>>>> Posts Controller index!"
@@ -12,8 +13,6 @@ class PostsController < ApplicationController
         if !@blogger
             # Get all posts result
             post_relation = Post.order('created_at DESC')
-            params.delete(:blogger_id)
-            params.delete(:blogger)
         else
             # Get posts result by blogger
             post_relation = Post.where('author_id = ?', @blogger.id).order('created_at DESC')
@@ -22,18 +21,21 @@ class PostsController < ApplicationController
         # Total posts of current relation
         @total_posts = post_relation.count
 
-        # Post amount per page
-        @per_page = params[:per_page]? params[:per_page].to_i : 10
+        puts ">>>>>> ", params[:per_page].respond_to?(:to_i), (params[:per_page] && params[:per_page].respond_to?(:to_i)), (params[:per_page] && params[:per_page].respond_to?(:to_i))? 1 : 10
 
+        # Post amount per page
+        @per_page = (params[:per_page] > 0)? params[:per_page] : 10
+
+        puts ">>>>>> ", @per_page
         # Total page number for dropdown
         @total_page = (@total_posts/ @per_page.to_f).ceil
 
         # Get the target page & check if it's validate
-        @go_to_page = params[:go_to_page]? params[:go_to_page].to_i : 1
+        @go_to_page = (params[:go_to_page] > 0)? params[:go_to_page] : 1
         @go_to_page = 1 if @go_to_page > @total_page
 
         # Get relation result by LIMIT & OFFSET
-        @posts = post_relation.order('created_at DESC').offset(offset(@go_to_page, @per_page))
+        @posts = post_relation.order('created_at DESC').limit(@per_page).offset(offset(@go_to_page, @per_page))
 
     end
 
@@ -113,5 +115,12 @@ class PostsController < ApplicationController
                 puts ">>>>>> Validation failed: Un-author action is prohibited!"
                 redirect_to post_path
             end
+        end
+
+    private 
+        # Pre-action to format page params
+        def sanitize_page_params
+            params[:per_page] = params[:per_page].to_i
+            params[:go_to_page] = params[:go_to_page].to_i
         end
 end
