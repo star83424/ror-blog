@@ -274,9 +274,9 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
   # For Heroku app
-  config.omniauth :facebook, "535554651221941", "6401ea0bbac649ecc6c61b6efc46088a", :scope => 'public_profile,email', :info_fields => 'email,name'
+  config.omniauth :facebook, "535554651221941", "6401ea0bbac649ecc6c61b6efc46088a", :scope => 'email', :info_fields => 'email'
   # For localhost
-  # config.omniauth :facebook, "252575213364399", "c83d161deba029f204ea413e0c94eeed", :scope => 'public_profile,email', :info_fields => 'email,name', token_params: { parse: :json }
+  # config.omniauth :facebook, "252575213364399", "c83d161deba029f204ea413e0c94eeed", :scope => 'email', :info_fields => 'email', token_params: { parse: :json }
   
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
