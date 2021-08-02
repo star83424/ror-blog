@@ -59,3 +59,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Devise
 gem 'devise', '~> 4.2'
+
+# Omniauth
+gem "omniauth", "~> 1.9.1"
+gem 'omniauth-facebook'
