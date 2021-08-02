@@ -21,12 +21,9 @@ class PostsController < ApplicationController
         # Total posts of current relation
         @total_posts = post_relation.count
 
-        puts ">>>>>> ", params[:per_page].respond_to?(:to_i), (params[:per_page] && params[:per_page].respond_to?(:to_i)), (params[:per_page] && params[:per_page].respond_to?(:to_i))? 1 : 10
-
         # Post amount per page
         @per_page = (params[:per_page] > 0)? params[:per_page] : 10
 
-        puts ">>>>>> ", @per_page
         # Total page number for dropdown
         @total_page = (@total_posts/ @per_page.to_f).ceil
 
