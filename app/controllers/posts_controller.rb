@@ -33,7 +33,7 @@ class PostsController < ApplicationController
 
         # Get relation result by LIMIT & OFFSET
         @posts = post_relation.order('created_at DESC').limit(@per_page).offset(offset(@go_to_page, @per_page))
-
+        render :json => {data: "hi"}
     end
 
     def show

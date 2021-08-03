@@ -1,0 +1,101 @@
+/* You can add global styles to this file, and also import other style files */
+
+:root {
+  --left-padding: 40px;
+  --page-header-height: 80px;
+  --side-menu-width: 20vw;
+  --body-margin: 8px;
+}
+
+.side-menu{
+  width: var(--side-menu-width);
+  display: inline-block;
+  position: fixed;
+}
+
+.side-menu-content{
+  padding: 10%;
+}
+
+.side-menu-logo{
+  position: relative;
+  width: calc(var(--side-menu-width) * 0.7);
+  height: calc(var(--side-menu-width) * 0.7);
+  font-size: calc(var(--side-menu-width) * 0.7 * 0.8);
+  padding: calc(var(--side-menu-width) * 0.7 * 0.1);
+}
+
+.page{
+  position: fixed;
+  display: inline-block;
+  left: 20vw;
+  width: auto;
+}
+
+.page-header{
+  position: fixed;
+  height: var(--page-header-height);
+}
+
+.page-title{
+  display: inline-block;
+  padding: calc(var(--left-padding) / 2) var(--left-padding);
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.page-body{
+  position: relative;
+  top: var(--page-header-height);
+  overflow-y: scroll;
+  height: calc(100vh - var(--page-header-height) - 2 * var(--body-margin));
+  width: calc(100vw - var(--side-menu-width));
+}
+
+.page-content{
+  margin: var(--left-padding);
+  height: 100%;
+}
+
+.post-date{
+  width: 100%;
+  display: inline-block;
+}
+
+.post-content{
+  width: 100%;
+  display: inline-block;
+}
+
+.post-comment{
+  width: 100%;
+  display: inline-block;
+}
+
+.post-list-table{
+  width: 800px;
+}
+
+.table-title{
+  width: 50%;
+}
+
+.table-author{
+  width: 30%;
+}
+
+.table-published-time{
+  width: 20%;
+}
+
+.field_with_errors{
+  color: red;
+}
+
+.devise-alert{
+  color: red;
+}
+
+td{
+  text-align: center;
+}
