@@ -4,5 +4,5 @@ Rails.application.routes.draw do
     resources :comments
   end
   # root "posts#index"
-  get "*other", to: ""
+  # get "*other", to: ""
 end
