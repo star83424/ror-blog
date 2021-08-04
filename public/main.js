@@ -36,6 +36,32 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/back-to-all-button/back-to-all-button.component.html":
+/*!************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/back-to-all-button/back-to-all-button.component.html ***!
+  \************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<button (click)=\"backToAll()\">Back to all</button>\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/edit-page/edit-page.component.html":
+/*!******************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/edit-page/edit-page.component.html ***!
+  \******************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"page-header\">\n  <h1 class=\"page-title\">Edit Post</h1>\n  <app-back-to-all-button></app-back-to-all-button>\n  <app-signing-buttons></app-signing-buttons>\n</div>\n\n<div class=\"page-body\">\n  <div class=\"page-content\">\n      <p>\n          <label for=\"post_title\">Title</label><br>\n          <input type=\"text\" [(ngModel)]=\"post.title\" [name]=\"post?.title\" id=\"post_title\">\n      </p>\n      <p>\n          <label for=\"post_text\">Text</label><br>\n          <textarea  [(ngModel)]=\"post.text\" [name]=\"post?.text\" id=\"post_text\"></textarea>\n      </p>\n      <p>\n          <button (click)=\"edit()\">Save Post</button>\n      </p>\n  </div>\n</div>\n");
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/error-page/error-page.component.html":
 /*!********************************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/error-page/error-page.component.html ***!
@@ -45,7 +71,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"page-header\">\n  <h1 class=\"page-title\">Error Page</h1>\n  <button (click)=\"backToIndex()\">Back to Index</button>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"page-header\">\n  <h1 class=\"page-title\">Error Page</h1>\n  <app-back-to-all-button></app-back-to-all-button>\n</div>\n");
 
 /***/ }),
 
@@ -58,7 +84,20 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"page-header\">\n  <ng-container *ngIf=\"blogger; else allPost\">\n    <h1 class=\"page-title\">{{blogger?.email}}'s Blog</h1>\n    <button>Back to all</button>\n  </ng-container>\n  <ng-template #allPost>\n    <h1 class=\"page-title\">All Posts</h1>\n    <button (click)=\"signOut()\">Sign Out</button>\n    <ng-container *ngIf=\"author_signed_in; else notYetLogIn\">\n      <button>New Post</button>\n      <button>Sign Out</button>\n    </ng-container>\n    <ng-template #notYetLogIn>\n      <button (click)=\"signUp()\">Register</button>\n      <button (click)=\"signIn()\">Sing In</button>\n    </ng-template>\n  </ng-template>\n</div>\n\n<div class=\"page-body\">\n  <div class=\"page-content\">\n    <table class=\"post-list-table\">\n      <tr>\n        <th class=\"table-title\">Title</th>\n        <th class=\"table-author\">Author</th>\n        <th class=\"table-published-time\">Published Time</th>\n      </tr>\n\n      <tr *ngFor=\"let post of posts\">\n        <td><a (click)=\"goToPost()\">{{post?.title}}</a></td>\n        <td>{{post?.author?.email}}</td>\n        <td>{{post?.created_at}}</td>\n      </tr>\n    </table>\n    <br>\n    {{totalPosts}} found! <br>\n    <button (click)=\"paginate()\">Go to page</button>\n    <select [(ngModel)]=\"goToPage\">\n      <option *ngFor=\"let page of pages\" [ngValue]=\"page+1\">{{page+1}}</option>\n    </select>\n    / {{this.totalPage}} with <input type=\"text\" [(ngModel)]=\"perPage\"> posts per page\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"page-header\">\n  <!-- Specific author's blog -->\n  <ng-container *ngIf=\"blogger; else allPost\">\n    <h1 class=\"page-title\">{{blogger?.email}}'s Blog</h1>\n    <app-back-to-all-button></app-back-to-all-button>\n  </ng-container>\n  <!-- All Posts Index Page -->\n  <ng-template #allPost>\n    <h1 class=\"page-title\">All Posts</h1>\n  </ng-template>\n  <app-signing-buttons></app-signing-buttons>\n</div>\n\n<div class=\"page-body\">\n  <div class=\"page-content\">\n    <table class=\"post-list-table\">\n      <tr>\n        <th class=\"table-title\">Title</th>\n        <th class=\"table-author\">Author</th>\n        <th class=\"table-published-time\">Published Time</th>\n      </tr>\n\n      <tr *ngFor=\"let post of posts\">\n        <td><a (click)=\"goToPost(post)\">{{post?.title}}</a></td>\n        <td>{{post?.author?.email}}</td>\n        <td>{{post?.created_at}}</td>\n      </tr>\n    </table>\n    <br>\n    {{totalPosts}} found! <br>\n    <button (click)=\"paginate()\">Go to page</button>\n    <select [(ngModel)]=\"goToPage\" class=\"page-select\">\n      <option *ngFor=\"let page of pages\" [ngValue]=\"page+1\">{{page+1}}</option>\n    </select>\n    / {{this.totalPage}} with <input type=\"text\" class=\"per-page-input\" [(ngModel)]=\"perPage\"> posts per page\n  </div>\n</div>\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/post-page/post-page.component.html":
+/*!******************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/post-page/post-page.component.html ***!
+  \******************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"page-header\">\n  <h1 class=\"page-title\">Hi from Taiwan</h1>\n  <app-back-to-all-button></app-back-to-all-button>\n  <app-signing-buttons></app-signing-buttons>\n  <button (click)=\"edit()\">Edit</button>\n  <button (click)=\"delete()\">Delete</button>\n</div>\n\n<div class=\"page-body\">\n  <div class=\"page-content\">\n    <div class=\"post-date\">\n      <p>Author: abcabc@abc.tw</p>\n    </div>\n    <div class=\"post-date\">\n      <p>Published time: August 02, 2021</p>\n    </div>\n    <div class=\"post-content\">\n      <div>\n        <p>\n          I just succeed my first attempt\n        </p>\n      </div>\n    </div>\n    <div class=\"post-comment\">\n      <h2>Comments</h2>\n      <b>\n        cdcdcd@abc.tw commented on August 02, 2021\n      </b>\n      <p>\n        I was just too excited!\n      </p>\n      <br>\n      <h2>Add a comment:</h2>\n      <form class=\"new_comment\" id=\"new_comment\" action=\"/posts/6/comments\" accept-charset=\"UTF-8\" method=\"post\"><input\n          type=\"hidden\" name=\"authenticity_token\"\n          value=\"muGufTXnZg1H7R_6APoJSvyYZEamCOnRXqiK0uAJtYoQzra44nO9dqv60WuNRs2F6jsdKfcU6luTHMrskMVgGw\">\n        <p>\n          <label for=\"comment_commenter\">Commenter</label><br>\n          <!-- Block loggin user to change the commenter name of it-->\n          <input value=\"star83424.dif01@g2.nctu.edu.tw\" readonly=\"readonly\" type=\"text\" name=\"comment[commenter]\"\n            id=\"comment_commenter\">\n        </p>\n        <p>\n          <label for=\"comment_content\">Content</label><br>\n          <textarea name=\"comment[content]\" id=\"comment_content\"></textarea>\n        </p>\n        <p>\n          <input type=\"submit\" name=\"commit\" value=\"Create Comment\" data-disable-with=\"Create Comment\">\n        </p>\n      </form>\n    </div>\n  </div>\n</div>\n");
 
 /***/ }),
 
@@ -71,7 +110,20 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"side-menu\">\n  <div class=\"side-menu-content\">\n      <div class=\"side-menu-logo\">\n          <i class=\"fas fa-user-astronaut\"></i>\n      </div>\n      <b class=\"sign-in\">\n          Welcome\n          <ng-container *ngIf=\"isLoggedIn; else platformName\">{{user?.email}}</ng-container>\n          <ng-template #platformName>to PCHao Blog Platform</ng-template>\n          !\n      </b>\n      <!-- <p class=\"notice\">\n          {{}}\n          <%= notice %>\n      </p>\n      <p class=\"devise-alert\">\n          <%= alert %>\n      </p>\n      <br>\n      <ul>\n          <li>\n              <%= link_to 'All Posts', posts_path() %>\n          </li>\n          <% if author_signed_in? %>\n              <li>\n                  <%= link_to 'My Blog', posts_path(:blogger_id => current_author.id) %>\n              </li>\n          <% end %>\n      </ul>\n      <br>\n      <%= yield :menu_blog_search %>\n      <%= render 'menu/social_media' %> -->\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"side-menu\">\n  <div class=\"side-menu-content\">\n      <div class=\"side-menu-logo\">\n          <i class=\"fas fa-user-astronaut\"></i>\n      </div>\n      <b class=\"sign-in\">\n          Welcome\n          <ng-container *ngIf=\"isLoggedIn; else platformName\">{{user?.email}}</ng-container>\n          <ng-template #platformName>to PCHao Blog Platform</ng-template>\n          !\n      </b>\n      <br>\n      <ul>\n        <li><a (click)=\"goToAllPost()\">All Posts</a></li>\n        <li><a (click)=\"goToMyBlog()\">My Blog</a></li>\n      </ul>\n      <br>\n  </div>\n</div>\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/signing-buttons/signing-buttons.component.html":
+/*!******************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/signing-buttons/signing-buttons.component.html ***!
+  \******************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<button (click)=\"signOut()\">Sign Out</button>\n<button (click)=\"signUp()\">Register</button>\n<button (click)=\"signIn()\">Sing In</button>\n");
 
 /***/ }),
 
@@ -340,10 +392,14 @@ function __classPrivateFieldSet(receiver, privateMap, value) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppRoutingModule", function() { return AppRoutingModule; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _error_page_error_page_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./error-page/error-page.component */ "./src/app/error-page/error-page.component.ts");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
-/* harmony import */ var _index_page_index_page_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./index-page/index-page.component */ "./src/app/index-page/index-page.component.ts");
+/* harmony import */ var _post_page_post_page_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./post-page/post-page.component */ "./src/app/post-page/post-page.component.ts");
+/* harmony import */ var _edit_page_edit_page_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit-page/edit-page.component */ "./src/app/edit-page/edit-page.component.ts");
+/* harmony import */ var _error_page_error_page_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./error-page/error-page.component */ "./src/app/error-page/error-page.component.ts");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _index_page_index_page_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./index-page/index-page.component */ "./src/app/index-page/index-page.component.ts");
+
+
 
 
 
@@ -351,10 +407,16 @@ __webpack_require__.r(__webpack_exports__);
 
 const routes = [{
         path: "",
-        component: _index_page_index_page_component__WEBPACK_IMPORTED_MODULE_4__["IndexPageComponent"]
+        component: _index_page_index_page_component__WEBPACK_IMPORTED_MODULE_6__["IndexPageComponent"]
+    }, {
+        path: "edit",
+        component: _edit_page_edit_page_component__WEBPACK_IMPORTED_MODULE_2__["EditPageComponent"]
+    }, {
+        path: "posts",
+        component: _post_page_post_page_component__WEBPACK_IMPORTED_MODULE_1__["PostPageComponent"]
     }, {
         path: "error",
-        component: _error_page_error_page_component__WEBPACK_IMPORTED_MODULE_1__["ErrorPageComponent"]
+        component: _error_page_error_page_component__WEBPACK_IMPORTED_MODULE_3__["ErrorPageComponent"]
         // },{
         //   path: "**",
         //   redirectTo: "",
@@ -363,9 +425,9 @@ const routes = [{
 let AppRoutingModule = class AppRoutingModule {
 };
 AppRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
-        imports: [_angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"].forRoot(routes)],
-        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"]]
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_4__["NgModule"])({
+        imports: [_angular_router__WEBPACK_IMPORTED_MODULE_5__["RouterModule"].forRoot(routes)],
+        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_5__["RouterModule"]]
     })
 ], AppRoutingModule);
 
@@ -438,6 +500,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
 /* harmony import */ var _error_page_error_page_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./error-page/error-page.component */ "./src/app/error-page/error-page.component.ts");
+/* harmony import */ var _post_page_post_page_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./post-page/post-page.component */ "./src/app/post-page/post-page.component.ts");
+/* harmony import */ var _edit_page_edit_page_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./edit-page/edit-page.component */ "./src/app/edit-page/edit-page.component.ts");
+/* harmony import */ var _signing_buttons_signing_buttons_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./signing-buttons/signing-buttons.component */ "./src/app/signing-buttons/signing-buttons.component.ts");
+/* harmony import */ var _back_to_all_button_back_to_all_button_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./back-to-all-button/back-to-all-button.component */ "./src/app/back-to-all-button/back-to-all-button.component.ts");
+
+
+
+
 
 
 
@@ -457,7 +527,11 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"],
             _index_page_index_page_component__WEBPACK_IMPORTED_MODULE_5__["IndexPageComponent"],
             _side_menu_side_menu_component__WEBPACK_IMPORTED_MODULE_7__["SideMenuComponent"],
-            _error_page_error_page_component__WEBPACK_IMPORTED_MODULE_10__["ErrorPageComponent"]
+            _error_page_error_page_component__WEBPACK_IMPORTED_MODULE_10__["ErrorPageComponent"],
+            _post_page_post_page_component__WEBPACK_IMPORTED_MODULE_11__["PostPageComponent"],
+            _edit_page_edit_page_component__WEBPACK_IMPORTED_MODULE_12__["EditPageComponent"],
+            _signing_buttons_signing_buttons_component__WEBPACK_IMPORTED_MODULE_13__["SigningButtonsComponent"],
+            _back_to_all_button_back_to_all_button_component__WEBPACK_IMPORTED_MODULE_14__["BackToAllButtonComponent"]
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -470,6 +544,99 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
     })
 ], AppModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/back-to-all-button/back-to-all-button.component.ts":
+/*!********************************************************************!*\
+  !*** ./src/app/back-to-all-button/back-to-all-button.component.ts ***!
+  \********************************************************************/
+/*! exports provided: BackToAllButtonComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BackToAllButtonComponent", function() { return BackToAllButtonComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+
+let BackToAllButtonComponent = class BackToAllButtonComponent {
+    constructor(router) {
+        this.router = router;
+    }
+    ngOnInit() {
+    }
+    /**
+     * 回到所有文章列表
+     *
+     * @memberof EditPageComponent
+     */
+    backToAll() {
+        this.router.navigate(['']);
+    }
+};
+BackToAllButtonComponent.ctorParameters = () => [
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"] }
+];
+BackToAllButtonComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Component"])({
+        selector: 'app-back-to-all-button',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./back-to-all-button.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/back-to-all-button/back-to-all-button.component.html")).default
+    })
+], BackToAllButtonComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/edit-page/edit-page.component.ts":
+/*!**************************************************!*\
+  !*** ./src/app/edit-page/edit-page.component.ts ***!
+  \**************************************************/
+/*! exports provided: EditPageComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditPageComponent", function() { return EditPageComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+
+
+
+let EditPageComponent = class EditPageComponent {
+    constructor(router) {
+        this.router = router;
+        this.post = {};
+    }
+    ngOnInit() {
+    }
+    /**
+     * 編輯 （待串接）
+     *
+     * @memberof EditPageComponent
+     */
+    edit() {
+        // TODO: Wait to connect to edit api with auth token
+        console.log("Edit post: ", this.post);
+        this.router.navigate(['']);
+    }
+};
+EditPageComponent.ctorParameters = () => [
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
+];
+EditPageComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-edit-page',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./edit-page.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/edit-page/edit-page.component.html")).default
+    })
+], EditPageComponent);
 
 
 
@@ -496,9 +663,6 @@ let ErrorPageComponent = class ErrorPageComponent {
         this.router = router;
     }
     ngOnInit() {
-    }
-    backToIndex() {
-        this.router.navigate(['']);
     }
 };
 ErrorPageComponent.ctorParameters = () => [
@@ -556,7 +720,9 @@ let IndexPageComponent = class IndexPageComponent {
             }
         });
     }
-    goToPost(postId) {
+    goToPost(post) {
+        console.log("goToPost: ", post);
+        this.router.navigate(["posts", { post_id: post.id }]);
     }
     paginate() {
         this.getPosts({
@@ -593,15 +759,13 @@ let IndexPageComponent = class IndexPageComponent {
     get pages() {
         return [...Array(this.totalPage).keys()];
     }
-    signUp() {
-        // window.location.href = "http://localhost:3000/authors/sign_up";
-        this.router.navigate(["/error"]);
-    }
-    signIn() {
-        window.location.href = "http://localhost:3000/authors/sign_in";
-    }
-    signOut() {
-        window.location.href = "http://localhost:3000/authors/sign_out";
+    /**
+     * 回到所有文章列表
+     *
+     * @memberof EditPageComponent
+     */
+    backToAll() {
+        this.router.navigate(['']);
     }
 };
 IndexPageComponent.ctorParameters = () => [
@@ -620,6 +784,55 @@ IndexPageComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/app/post-page/post-page.component.ts":
+/*!**************************************************!*\
+  !*** ./src/app/post-page/post-page.component.ts ***!
+  \**************************************************/
+/*! exports provided: PostPageComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PostPageComponent", function() { return PostPageComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+
+let PostPageComponent = class PostPageComponent {
+    constructor(activatedRoute, router) {
+        this.activatedRoute = activatedRoute;
+        this.router = router;
+    }
+    ngOnInit() {
+        this.activatedRoute.paramMap.subscribe(params => {
+            console.log("PostPageComponent params:", params);
+        });
+    }
+    edit() {
+        this.router.navigate(["edit"]);
+    }
+    delete() {
+        // TODO: wait for api
+        this.router.navigate(["/"]);
+    }
+};
+PostPageComponent.ctorParameters = () => [
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"] }
+];
+PostPageComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Component"])({
+        selector: 'app-post-page',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./post-page.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/post-page/post-page.component.html")).default
+    })
+], PostPageComponent);
+
+
+
+/***/ }),
+
 /***/ "./src/app/side-menu/side-menu.component.ts":
 /*!**************************************************!*\
   !*** ./src/app/side-menu/side-menu.component.ts ***!
@@ -631,20 +844,81 @@ IndexPageComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SideMenuComponent", function() { return SideMenuComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
 
 
 let SideMenuComponent = class SideMenuComponent {
-    constructor() { }
+    constructor(router) {
+        this.router = router;
+    }
     ngOnInit() {
     }
+    goToAllPost() {
+        this.router.navigate(['']);
+    }
+    goToMyBlog() {
+        this.router.navigate(['error']);
+    }
 };
+SideMenuComponent.ctorParameters = () => [
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"] }
+];
 SideMenuComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Component"])({
         selector: 'app-side-menu',
         template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./side-menu.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/side-menu/side-menu.component.html")).default
     })
 ], SideMenuComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/signing-buttons/signing-buttons.component.ts":
+/*!**************************************************************!*\
+  !*** ./src/app/signing-buttons/signing-buttons.component.ts ***!
+  \**************************************************************/
+/*! exports provided: SigningButtonsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SigningButtonsComponent", function() { return SigningButtonsComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+
+let SigningButtonsComponent = class SigningButtonsComponent {
+    constructor(router) {
+        this.router = router;
+    }
+    ngOnInit() {
+    }
+    signUp() {
+        window.location.href = "http://localhost:3000/authors/sign_up";
+    }
+    signIn() {
+        window.location.href = "http://localhost:3000/authors/sign_in";
+    }
+    signOut() {
+        // TODO: connect to a sign_out api
+        // window.location.href = "http://localhost:3000/authors/sign_out";
+        this.router.navigate(["/error"]);
+    }
+};
+SigningButtonsComponent.ctorParameters = () => [
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"] }
+];
+SigningButtonsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Component"])({
+        selector: 'app-signing-buttons',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./signing-buttons.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/signing-buttons/signing-buttons.component.html")).default
+    })
+], SigningButtonsComponent);
 
 
 

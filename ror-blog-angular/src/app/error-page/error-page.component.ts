@@ -12,8 +12,4 @@ export class ErrorPageComponent implements OnInit {
   ngOnInit() {
   }
 
-  backToIndex(){
-    this.router.navigate(['']);
-  }
-
 }

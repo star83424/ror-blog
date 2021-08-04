@@ -9,12 +9,20 @@ import { SideMenuComponent } from './side-menu/side-menu.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { PostPageComponent } from './post-page/post-page.component';
+import { EditPageComponent } from './edit-page/edit-page.component';
+import { SigningButtonsComponent } from './signing-buttons/signing-buttons.component';
+import { BackToAllButtonComponent } from './back-to-all-button/back-to-all-button.component';
 @NgModule({
   declarations: [
     AppComponent,
     IndexPageComponent,
     SideMenuComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    PostPageComponent,
+    EditPageComponent,
+    SigningButtonsComponent,
+    BackToAllButtonComponent
   ],
   imports: [
     BrowserModule,

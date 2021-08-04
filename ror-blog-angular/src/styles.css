@@ -5,6 +5,8 @@
   --page-header-height: 80px;
   --side-menu-width: 20vw;
   --body-margin: 8px;
+  --button-height: 30px;
+  --light-grey: #EFEFF1;
 }
 
 .side-menu{
@@ -98,4 +100,27 @@
 
 td{
   text-align: center;
+}
+
+button{
+  width: 80px;
+  margin: 10px;
+  min-height: var(--button-height);
+  background: var(--light-grey);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border: none;
+  border-radius: 10px;
+}
+
+.page-select{
+  width: 50px;
+}
+
+.per-page-input{
+  width: 50px;
+}
+
+a {
+  text-decoration: underline;
+  color: blue;
 }

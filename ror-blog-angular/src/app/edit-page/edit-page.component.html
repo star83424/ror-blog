@@ -1,0 +1,21 @@
+<div class="page-header">
+  <h1 class="page-title">Edit Post</h1>
+  <app-back-to-all-button></app-back-to-all-button>
+  <app-signing-buttons></app-signing-buttons>
+</div>
+
+<div class="page-body">
+  <div class="page-content">
+      <p>
+          <label for="post_title">Title</label><br>
+          <input type="text" [(ngModel)]="post.title" [name]="post?.title" id="post_title">
+      </p>
+      <p>
+          <label for="post_text">Text</label><br>
+          <textarea  [(ngModel)]="post.text" [name]="post?.text" id="post_text"></textarea>
+      </p>
+      <p>
+          <button (click)="edit()">Save Post</button>
+      </p>
+  </div>
+</div>

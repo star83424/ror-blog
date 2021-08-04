@@ -1,20 +1,14 @@
 <div class="page-header">
+  <!-- Specific author's blog -->
   <ng-container *ngIf="blogger; else allPost">
     <h1 class="page-title">{{blogger?.email}}'s Blog</h1>
-    <button>Back to all</button>
+    <app-back-to-all-button></app-back-to-all-button>
   </ng-container>
+  <!-- All Posts Index Page -->
   <ng-template #allPost>
     <h1 class="page-title">All Posts</h1>
-    <button (click)="signOut()">Sign Out</button>
-    <ng-container *ngIf="author_signed_in; else notYetLogIn">
-      <button>New Post</button>
-      <button>Sign Out</button>
-    </ng-container>
-    <ng-template #notYetLogIn>
-      <button (click)="signUp()">Register</button>
-      <button (click)="signIn()">Sing In</button>
-    </ng-template>
   </ng-template>
+  <app-signing-buttons></app-signing-buttons>
 </div>
 
 <div class="page-body">
@@ -27,7 +21,7 @@
       </tr>
 
       <tr *ngFor="let post of posts">
-        <td><a (click)="goToPost()">{{post?.title}}</a></td>
+        <td><a (click)="goToPost(post)">{{post?.title}}</a></td>
         <td>{{post?.author?.email}}</td>
         <td>{{post?.created_at}}</td>
       </tr>
@@ -35,9 +29,9 @@
     <br>
     {{totalPosts}} found! <br>
     <button (click)="paginate()">Go to page</button>
-    <select [(ngModel)]="goToPage">
+    <select [(ngModel)]="goToPage" class="page-select">
       <option *ngFor="let page of pages" [ngValue]="page+1">{{page+1}}</option>
     </select>
-    / {{this.totalPage}} with <input type="text" [(ngModel)]="perPage"> posts per page
+    / {{this.totalPage}} with <input type="text" class="per-page-input" [(ngModel)]="perPage"> posts per page
   </div>
 </div>

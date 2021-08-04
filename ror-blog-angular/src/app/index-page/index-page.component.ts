@@ -49,8 +49,9 @@ export class IndexPageComponent implements OnInit {
 
   }
 
-  goToPost(postId){
-
+  goToPost(post){
+    console.log("goToPost: ", post);
+    this.router.navigate(["posts", {post_id: post.id}]);
   }
 
   paginate(){
@@ -93,18 +94,13 @@ export class IndexPageComponent implements OnInit {
     return [...Array(this.totalPage).keys()];
   }
 
-  signUp(){
-    // window.location.href = "http://localhost:3000/authors/sign_up";
-
-    this.router.navigate(["/error"]);
-  }
-
-  signIn(){
-    window.location.href = "http://localhost:3000/authors/sign_in";
-  }
-
-  signOut(){
-    window.location.href = "http://localhost:3000/authors/sign_out";
+  /**
+   * 回到所有文章列表
+   *
+   * @memberof EditPageComponent
+   */
+   backToAll(){
+    this.router.navigate(['']);
   }
 
 

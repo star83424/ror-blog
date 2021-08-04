@@ -9,26 +9,11 @@
           <ng-template #platformName>to PCHao Blog Platform</ng-template>
           !
       </b>
-      <!-- <p class="notice">
-          {{}}
-          <%= notice %>
-      </p>
-      <p class="devise-alert">
-          <%= alert %>
-      </p>
       <br>
       <ul>
-          <li>
-              <%= link_to 'All Posts', posts_path() %>
-          </li>
-          <% if author_signed_in? %>
-              <li>
-                  <%= link_to 'My Blog', posts_path(:blogger_id => current_author.id) %>
-              </li>
-          <% end %>
+        <li><a (click)="goToAllPost()">All Posts</a></li>
+        <li><a (click)="goToMyBlog()">My Blog</a></li>
       </ul>
       <br>
-      <%= yield :menu_blog_search %>
-      <%= render 'menu/social_media' %> -->
   </div>
 </div>

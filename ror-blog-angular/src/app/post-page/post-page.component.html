@@ -1,0 +1,53 @@
+<div class="page-header">
+  <h1 class="page-title">Hi from Taiwan</h1>
+  <app-back-to-all-button></app-back-to-all-button>
+  <app-signing-buttons></app-signing-buttons>
+  <button (click)="edit()">Edit</button>
+  <button (click)="delete()">Delete</button>
+</div>
+
+<div class="page-body">
+  <div class="page-content">
+    <div class="post-date">
+      <p>Author: abcabc@abc.tw</p>
+    </div>
+    <div class="post-date">
+      <p>Published time: August 02, 2021</p>
+    </div>
+    <div class="post-content">
+      <div>
+        <p>
+          I just succeed my first attempt
+        </p>
+      </div>
+    </div>
+    <div class="post-comment">
+      <h2>Comments</h2>
+      <b>
+        cdcdcd@abc.tw commented on August 02, 2021
+      </b>
+      <p>
+        I was just too excited!
+      </p>
+      <br>
+      <h2>Add a comment:</h2>
+      <form class="new_comment" id="new_comment" action="/posts/6/comments" accept-charset="UTF-8" method="post"><input
+          type="hidden" name="authenticity_token"
+          value="muGufTXnZg1H7R_6APoJSvyYZEamCOnRXqiK0uAJtYoQzra44nO9dqv60WuNRs2F6jsdKfcU6luTHMrskMVgGw">
+        <p>
+          <label for="comment_commenter">Commenter</label><br>
+          <!-- Block loggin user to change the commenter name of it-->
+          <input value="star83424.dif01@g2.nctu.edu.tw" readonly="readonly" type="text" name="comment[commenter]"
+            id="comment_commenter">
+        </p>
+        <p>
+          <label for="comment_content">Content</label><br>
+          <textarea name="comment[content]" id="comment_content"></textarea>
+        </p>
+        <p>
+          <input type="submit" name="commit" value="Create Comment" data-disable-with="Create Comment">
+        </p>
+      </form>
+    </div>
+  </div>
+</div>

@@ -5,6 +5,7 @@ class PostsController < ApplicationController
 
     def index()
         puts ">>>>>> Posts Controller index!"
+        # TODO: Only for angular project currently not connecting to a sign_out api
         sign_out current_author
 
         puts ">>>>>>>>>> params[:blogger_id]", params[:blogger_id]
