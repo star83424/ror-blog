@@ -74,3 +74,10 @@ yarn-debug.log*
 !/storage/.keep
 /public/uploads
 
+
+
+
+# Angular
+ror-blog-angular/dist/
+ror-blog-angular/*.log
+ror-blog-angular/node_modules
