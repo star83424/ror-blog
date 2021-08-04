@@ -113,3 +113,11 @@
 td{
     text-align: center;
 }
+
+.page-select{
+    width: 50px;
+  }
+  
+.per-page-input{
+    width: 50px;
+}

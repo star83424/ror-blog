@@ -36,8 +36,8 @@
         <%= form_tag posts_path, method: :get do %>
           <%= pluralize(@total_posts, "result")%> found! <br>
           <%= button_tag "Go to page" %>
-          <%= select_tag :go_to_page, options_for_select([*(1..@total_page)], @go_to_page) %>/ <%= @total_page %> pages
-          with <%= text_field_tag :per_page, @per_page %> posts per page
+          <%= select_tag :go_to_page, options_for_select([*(1..@total_page)], @go_to_page) , class: "page-select"%>/ <%= @total_page %> pages
+          with <%= text_field_tag :per_page, @per_page , class: "per-page-input"%> posts per page
         <% end %>
     </div>
 </div>
