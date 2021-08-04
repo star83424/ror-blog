@@ -1,6 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { BASE_URL } from '../app.model';
 
 @Component({
   selector: 'app-index-page',
@@ -69,7 +70,7 @@ export class IndexPageComponent implements OnInit {
   }
 
   getPosts(params?: any){
-    this.http.get("http://localhost:3000/posts", {
+    this.http.get(BASE_URL + "/posts", {
       params: params
     }).subscribe(data => {
       console.log("get Posts data:", data);

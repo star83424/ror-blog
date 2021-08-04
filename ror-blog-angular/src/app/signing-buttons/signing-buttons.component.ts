@@ -1,5 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { BASE_URL } from '../app.model';
 
 @Component({
   selector: 'app-signing-buttons',
@@ -13,16 +14,16 @@ export class SigningButtonsComponent implements OnInit {
   }
 
   signUp(){
-    window.location.href = "http://localhost:3000/authors/sign_up";
+    window.location.href = BASE_URL + "/authors/sign_up";
   }
 
   signIn(){
-    window.location.href = "http://localhost:3000/authors/sign_in";
+    window.location.href = BASE_URL + "/authors/sign_in";
   }
 
   signOut(){
     // TODO: connect to a sign_out api
-    // window.location.href = "http://localhost:3000/authors/sign_out";
+    // window.location.href = BASE_URL + "/authors/sign_out";
     this.router.navigate(["/error"]);
   }
 
