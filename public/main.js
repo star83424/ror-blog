@@ -36,6 +36,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/error-page/error-page.component.html":
+/*!********************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/error-page/error-page.component.html ***!
+  \********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"page-header\">\n  <h1 class=\"page-title\">Error Page</h1>\n  <button (click)=\"backToIndex()\">Back to Index</button>\n</div>\n");
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/index-page/index-page.component.html":
 /*!********************************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/index-page/index-page.component.html ***!
@@ -45,7 +58,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"page-header\">\n  <ng-container *ngIf=\"blogger; else allPost\">\n    <h1 class=\"page-title\">{{blogger?.email}}'s Blog</h1>\n    <a href=\"index\">Back to all</a>\n  </ng-container>\n  <ng-template #allPost>\n    <h1 class=\"page-title\">All Posts</h1>\n    <a (click)=\"goToSignOut()\">Sign Out</a>\n    <ng-container *ngIf=\"author_signed_in; else notYetLogIn\">\n      <a href=\"index\">New Post</a>\n      <a href=\"index\">Sign Out</a>\n    </ng-container>\n    <ng-template #notYetLogIn>\n      <a (click)=\"goToSignUp()\">Register</a>\n      <a (click)=\"goToSignIn()\">Sing In</a>\n    </ng-template>\n  </ng-template>\n</div>\n\n<div class=\"page-body\">\n  <div class=\"page-content\">\n    <table class=\"post-list-table\">\n      <tr>\n        <th class=\"table-title\">Title</th>\n        <th class=\"table-author\">Author</th>\n        <th class=\"table-published-time\">Published Time</th>\n      </tr>\n\n      <tr *ngFor=\"let post of posts\">\n        <td><a (click)=\"goToPost()\">{{post?.title}}</a></td>\n        <td>{{post?.author?.email}}</td>\n        <td>{{post?.created_at}}</td>\n      </tr>\n    </table>\n    <br>\n    {{pagination?.total_posts}} found! <br>\n    <a (click)=\"paginate()\">Go to page</a>\n    <select [(ngModel)]=\"toPage\">\n      <option *ngFor=\"let page of pages\" [ngValue]=\"page+1\">{{page+1}}</option>\n    </select>\n    / {{this.totalPages}} with <input type=\"text\" [(ngModel)]=\"perPage\"> posts per page\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"page-header\">\n  <ng-container *ngIf=\"blogger; else allPost\">\n    <h1 class=\"page-title\">{{blogger?.email}}'s Blog</h1>\n    <button>Back to all</button>\n  </ng-container>\n  <ng-template #allPost>\n    <h1 class=\"page-title\">All Posts</h1>\n    <button (click)=\"signOut()\">Sign Out</button>\n    <ng-container *ngIf=\"author_signed_in; else notYetLogIn\">\n      <button>New Post</button>\n      <button>Sign Out</button>\n    </ng-container>\n    <ng-template #notYetLogIn>\n      <button (click)=\"signUp()\">Register</button>\n      <button (click)=\"signIn()\">Sing In</button>\n    </ng-template>\n  </ng-template>\n</div>\n\n<div class=\"page-body\">\n  <div class=\"page-content\">\n    <table class=\"post-list-table\">\n      <tr>\n        <th class=\"table-title\">Title</th>\n        <th class=\"table-author\">Author</th>\n        <th class=\"table-published-time\">Published Time</th>\n      </tr>\n\n      <tr *ngFor=\"let post of posts\">\n        <td><a (click)=\"goToPost()\">{{post?.title}}</a></td>\n        <td>{{post?.author?.email}}</td>\n        <td>{{post?.created_at}}</td>\n      </tr>\n    </table>\n    <br>\n    {{totalPosts}} found! <br>\n    <button (click)=\"paginate()\">Go to page</button>\n    <select [(ngModel)]=\"goToPage\">\n      <option *ngFor=\"let page of pages\" [ngValue]=\"page+1\">{{page+1}}</option>\n    </select>\n    / {{this.totalPage}} with <input type=\"text\" [(ngModel)]=\"perPage\"> posts per page\n  </div>\n</div>\n");
 
 /***/ }),
 
@@ -327,31 +340,32 @@ function __classPrivateFieldSet(receiver, privateMap, value) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppRoutingModule", function() { return AppRoutingModule; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
-/* harmony import */ var _index_page_index_page_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./index-page/index-page.component */ "./src/app/index-page/index-page.component.ts");
+/* harmony import */ var _error_page_error_page_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./error-page/error-page.component */ "./src/app/error-page/error-page.component.ts");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _index_page_index_page_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./index-page/index-page.component */ "./src/app/index-page/index-page.component.ts");
+
 
 
 
 
 const routes = [{
         path: "",
-        redirectTo: "index",
-        pathMatch: "full"
+        component: _index_page_index_page_component__WEBPACK_IMPORTED_MODULE_4__["IndexPageComponent"]
     }, {
-        path: "index",
-        component: _index_page_index_page_component__WEBPACK_IMPORTED_MODULE_3__["IndexPageComponent"]
+        path: "error",
+        component: _error_page_error_page_component__WEBPACK_IMPORTED_MODULE_1__["ErrorPageComponent"]
         // },{
         //   path: "**",
-        //   redirectTo: "error",
+        //   redirectTo: "",
         //   pathMatch: "full"
     }];
 let AppRoutingModule = class AppRoutingModule {
 };
 AppRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-        imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forRoot(routes)],
-        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
+        imports: [_angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"].forRoot(routes)],
+        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"]]
     })
 ], AppRoutingModule);
 
@@ -420,8 +434,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
 /* harmony import */ var _index_page_index_page_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./index-page/index-page.component */ "./src/app/index-page/index-page.component.ts");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
-/* harmony import */ var _side_menu_side_menu_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./side-menu/side-menu.component */ "./src/app/side-menu/side-menu.component.ts");
+/* harmony import */ var _side_menu_side_menu_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./side-menu/side-menu.component */ "./src/app/side-menu/side-menu.component.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _error_page_error_page_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./error-page/error-page.component */ "./src/app/error-page/error-page.component.ts");
+
+
 
 
 
@@ -438,18 +456,60 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         declarations: [
             _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"],
             _index_page_index_page_component__WEBPACK_IMPORTED_MODULE_5__["IndexPageComponent"],
-            _side_menu_side_menu_component__WEBPACK_IMPORTED_MODULE_8__["SideMenuComponent"]
+            _side_menu_side_menu_component__WEBPACK_IMPORTED_MODULE_7__["SideMenuComponent"],
+            _error_page_error_page_component__WEBPACK_IMPORTED_MODULE_10__["ErrorPageComponent"]
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
             _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"],
             _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpClientModule"],
-            _angular_forms__WEBPACK_IMPORTED_MODULE_7__["FormsModule"]
+            _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormsModule"],
+            _angular_common__WEBPACK_IMPORTED_MODULE_9__["CommonModule"]
         ],
         providers: [],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
     })
 ], AppModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/error-page/error-page.component.ts":
+/*!****************************************************!*\
+  !*** ./src/app/error-page/error-page.component.ts ***!
+  \****************************************************/
+/*! exports provided: ErrorPageComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ErrorPageComponent", function() { return ErrorPageComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+
+let ErrorPageComponent = class ErrorPageComponent {
+    constructor(router) {
+        this.router = router;
+    }
+    ngOnInit() {
+    }
+    backToIndex() {
+        this.router.navigate(['']);
+    }
+};
+ErrorPageComponent.ctorParameters = () => [
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"] }
+];
+ErrorPageComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Component"])({
+        selector: 'app-error-page',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./error-page.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/error-page/error-page.component.html")).default
+    })
+], ErrorPageComponent);
 
 
 
@@ -468,43 +528,86 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+
 
 
 
 let IndexPageComponent = class IndexPageComponent {
-    constructor(http) {
+    constructor(http, activateRoute, router) {
         this.http = http;
+        this.activateRoute = activateRoute;
+        this.router = router;
     }
+    /**
+     * Init
+     *
+     * @memberof IndexPageComponent
+     */
     ngOnInit() {
-        this.http.get('http://localhost:3000/posts').subscribe(data => {
-            console.log("QQQQQQQQ", data);
-            this.author_signed_in = data['author_signed_in'];
+        this.activateRoute.paramMap.subscribe(params => {
+            console.log(params);
+            let bloggerId = params.get('blogger_id');
+            if (bloggerId) {
+                this.getPostsByBloggerId(bloggerId);
+            }
+            else {
+                this.getPosts();
+            }
         });
-        this.initPaginate();
     }
-    goToPost() {
+    goToPost(postId) {
     }
     paginate() {
+        this.getPosts({
+            go_to_page: this.goToPage,
+            per_page: this.perPage
+        });
     }
-    goToSignUp() {
-        window.location.href = "http://localhost:3000/authors/sign_up";
+    getPostsByBloggerId(bloggerId) {
+        console.log("getPostsByBloggerId");
+        this.getPosts({
+            blogger_id: bloggerId
+        });
     }
-    goToSignIn() {
-        window.location.href = "http://localhost:3000/authors/sign_in";
+    getPosts(params) {
+        this.http.get("http://localhost:3000/posts", {
+            params: params
+        }).subscribe(data => {
+            console.log("get Posts data:", data);
+            this.initPaginate(data['pagination']);
+            this.posts = data['posts'];
+            this.blogger = data['blogger'];
+            this.authorSignedIn = data['author_signed_in'];
+        }, error => {
+            console.log("Error occurs:", error);
+            this.router.navigate(["/error"]);
+        });
     }
-    goToSignOut() {
-        window.location.href = "http://localhost:3000/authors/sign_out";
-    }
-    initPaginate() {
-        this.toPage = this.toPage ? this.toPage : 1;
-        this.totalPages = (this.pagination && this.pagination.totalPages) ? (this.pagination.totalPages) : 1;
+    initPaginate(pagination) {
+        this.goToPage = pagination.current_page ? pagination.current_page : 1;
+        this.totalPage = (pagination.total_page) ? (pagination.total_page) : 1;
+        this.perPage = pagination.per_page ? pagination.per_page : 10;
+        this.totalPosts = pagination.total_posts ? pagination.total_posts : 0;
     }
     get pages() {
-        return [...Array(this.totalPages).keys()];
+        return [...Array(this.totalPage).keys()];
+    }
+    signUp() {
+        // window.location.href = "http://localhost:3000/authors/sign_up";
+        this.router.navigate(["/error"]);
+    }
+    signIn() {
+        window.location.href = "http://localhost:3000/authors/sign_in";
+    }
+    signOut() {
+        window.location.href = "http://localhost:3000/authors/sign_out";
     }
 };
 IndexPageComponent.ctorParameters = () => [
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"] }
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] }
 ];
 IndexPageComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Component"])({

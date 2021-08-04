@@ -1,19 +1,27 @@
 class PostsController < ApplicationController
     before_action :authenticate_author!, except: [:index, :show]
     before_action :sanitize_page_params
+    after_action :set_csrf_headers
 
     def index()
         puts ">>>>>> Posts Controller index!"
+        sign_out current_author
 
+        puts ">>>>>>>>>> params[:blogger_id]", params[:blogger_id]
         if params[:blogger_id]
+            puts ">>>>>>>>>> params[:blogger_id]", params[:blogger_id]
             @blogger = Author.find(params[:blogger_id])
         elsif params[:blogger]
+            puts ">>>>>>>>>> params[:blogger]", params[:blogger]
             @blogger = Author.where('email = ?', params[:blogger]).first
         end
+        
         if !@blogger
+            puts ">>>>>>>>>> !@blogger"
             # Get all posts result
             post_relation = Post.order('created_at DESC')
         else
+            puts ">>>>>>>>>> @blogger"
             # Get posts result by blogger
             post_relation = Post.where('author_id = ?', @blogger.id).order('created_at DESC')
         end
@@ -33,7 +41,18 @@ class PostsController < ApplicationController
 
         # Get relation result by LIMIT & OFFSET
         @posts = post_relation.order('created_at DESC').limit(@per_page).offset(offset(@go_to_page, @per_page))
-        render :json => {data: "hi"}
+
+        render :json => { 
+            blogger: @blogger, 
+            posts: @posts.as_json(methods:[:author]),
+            pagination: {
+                total_page: @total_page,
+                per_page: @per_page,
+                current_page: @go_to_page,
+                total_posts: @total_posts
+            },
+            author_signed_in: author_signed_in?
+        }
     end
 
     def show
@@ -119,5 +138,12 @@ class PostsController < ApplicationController
         def sanitize_page_params
             params[:per_page] = params[:per_page].to_i
             params[:go_to_page] = params[:go_to_page].to_i
+        end
+
+    protected
+        def set_csrf_headers
+            cookies['XSRF-TOKEN'] = form_authenticity_token if protect_against_forgery?  
+            response.headers['X-CSRF-Param'] = request_forgery_protection_token
+            response.headers['X-CSRF-Token'] = form_authenticity_token
         end
 end
