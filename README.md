@@ -20,3 +20,28 @@ Currently, only the index page already has its interaction with the RoR api resp
 
 See angular SPA demo in another Heroku App: [PCHao's RoR Blog in Angular SPA Project(Demo version)](https://pchao-ror-ng-blog-app.herokuapp.com/)  
 此版本也以部署上Heroku，歡迎自由使用。
+
+### Demo video of this project
+Checkout the demo vedio here in [PCHao's RoR Blog Demo](https://pchao-ror-ng-blog-app.herokuapp.com/)  
+
+### References & Thanks to
+- https://rails.ruby.tw/getting_started.html
+- https://medium.com/@tienshunlo_32785/rails-devise系列文-實作兩種用戶-user-跟-admin-e86018df4e88
+- https://ihower.tw/rails/auth.html
+- https://rails.ruby.tw/routing.html
+- http://jameshuynh.com/rails/paginate/find_by_sql/2017/09/30/how-to-paginate-rails-find-by-sql-result/
+- https://naturaily.com/blog/value-based-pagination-rails
+- http://jameshuynh.com/rails/paginate/find_by_sql/2017/09/30/how-to-paginate-rails-find-by-sql-result/
+- https://ithelp.ithome.com.tw/articles/10218717
+- https://stackoverflow.com/questions/24148723/undefined-method-devise-for-user/24148983
+- https://ithelp.ithome.com.tw/articles/10199016
+- https://stackoverflow.com/questions/52339221/rails-gem-error-while-installing-pg-1-1-3-and-bundler-cannot-continue/52342295
+- https://stackoverflow.com/questions/44901379/gemextbuilderror-error-failed-to-build-gem-native-extension-for-rails-vers/449023466
+- https://ithelp.ithome.com.tw/articles/10199016
+- Rails on Heroku https://ithelp.ithome.com.tw/articles/10199014
+- brew install postgresql https://stackoverflow.com/questions/52339221/rails-gem-error-while-installing-pg-1-1-3-and-bundler-cannot-continue/52342295
+- FB auth YT https://www.youtube.com/watch?v=Dd8dOAL6WYs
+- Ng8 with Rails https://medium.com/@samgreen_22756/angular-8-with-rails-5-55cd186a02c9
+- Ng8 on Rails https://medium.com/@tommybernaciak/angular-on-rails-how-to-start-37e3851ffb60
+- Heroku command & Procfile https://andyyou.github.io/2016/10/31/process-types-and-profile/
+- And so much more articles on the internets.
