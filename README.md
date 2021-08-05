@@ -23,6 +23,7 @@ See angular SPA demo in another Heroku App: [PCHao's RoR Blog in Angular SPA Pro
 
 ### Demo video of this project
 Checkout the demo vedio here in [PCHao's RoR Blog Demo](https://pchao-ror-ng-blog-app.herokuapp.com/)  
+本平台有一隻基本功能的Demo影片可供觀賞於上述之YT連結。
 
 ### References & Thanks to
 - https://rails.ruby.tw/getting_started.html
