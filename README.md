@@ -22,7 +22,7 @@ See angular SPA demo in another Heroku App: [PCHao's RoR Blog in Angular SPA Pro
 此版本也以部署上Heroku，歡迎自由使用。
 
 ### Demo video of this project
-Checkout the demo vedio here in [PCHao's RoR Blog Demo](https://pchao-ror-ng-blog-app.herokuapp.com/)  
+Checkout the demo vedio here in [PCHao's RoR Blog Demo](https://youtu.be/86lFbHx5opw)  
 本平台有一隻基本功能的Demo影片可供觀賞於上述之YT連結。
 
 ### References & Thanks to
